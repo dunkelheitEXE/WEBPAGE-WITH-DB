@@ -1,0 +1,104 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+}
+
+:root {
+    --color-soft: #D1D1D1;
+    --color-dark: #353535;
+    --color-success: #35B573;
+    --color-succes-soft: #3ED185;
+    --color-focus: #51A5CC;
+    --color-danger: #EF3232;
+    --color-danger-soft: #FF7373;
+}
+
+/* MENU BAR STYLIZING */
+.menu-bar {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--color-dark);
+}
+
+.menu-bar a {
+    padding: 10px;
+    text-decoration: none;
+    color: var(--color-soft);
+    font-weight: 900;
+}
+
+
+
+
+/* MENU DROPDOWN */
+.menu-dropdown {
+    position: absolute;
+    display: none;
+    left: -500px;
+}
+
+/* WHEN BUTTON WAS PUSHED */
+.visible{
+    position: fixed;
+    background: var(--color-dark);
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    height: 100%;
+    left: 0;
+}
+
+.dropdown-element {
+    list-style: none;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.dropdown-element a{
+    text-decoration: none;
+    color: var(--color-soft);
+}
+
+.dropdown-element:hover{
+    background-color: var(--color-soft);
+}
+
+.dropdown-element:hover > a{
+    color: var(--color-dark);
+}
+
+
+
+/* BASIC WIDGETS 
+- TITLES AND SUBTITLES
+- PARAGRAPHS
+- LIST
+- TARGETS
+*/
+
+.title {
+    width: 50%;
+    margin: 25px auto;
+    text-align: center;
+    font-weight: 900;
+    font-size: 25px;
+}
+
+.subtitle {
+    width: 50%;
+    margin: 25px auto;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.paragraph {
+    width: 70%;
+    margin: 15px auto;
+    text-align: center;
+}
