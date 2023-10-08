@@ -1,4 +1,4 @@
-let menu_button = document.getElementById("menu-button");
+let menu_button = document.getElementById("menu-button");//Comentario en español
 let menu_dropdown = document.getElementById("menu-dropdown");
 let statement = false;
 menu_button.addEventListener("click", () => {
