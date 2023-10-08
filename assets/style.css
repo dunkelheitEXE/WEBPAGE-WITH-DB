@@ -77,6 +77,7 @@
 /* BASIC WIDGETS 
 - TITLES AND SUBTITLES
 - PARAGRAPHS
+- IMAGES
 - LIST
 - TARGETS
 */
@@ -101,4 +102,25 @@
     width: 70%;
     margin: 15px auto;
     text-align: center;
+}
+
+.fill-content {
+    width: 100%;
+    text-align: center;
+}
+
+.main-image {
+    width: 80%;
+    margin: 25px auto;
+}
+.main-image img {
+    width: 100%;
+}
+
+.image {
+    width: 40%;
+    margin: 25px auto;
+}
+.image img {
+    width: 100%;
 }

@@ -18,6 +18,7 @@
         <a href="#">
         <span class="material-symbols-outlined" id="menu-button">menu</span>
         </a>
+        <a href="index.php" class="fill-content">TeCNO Bauherr's</a>
     </div>
     <div class="menu-dropdown" id="menu-dropdown">
         <li class="dropdown-element"><a href="">Alan</a></li>
