@@ -18,10 +18,10 @@
         <a href="#">
         <span class="material-symbols-outlined" id="menu-button">menu</span>
         </a>
-        <a href="index.php" class="fill-content">TeCNO Bauherr's</a>
+        <a href="#" class="fill-content">TeCNO Bauherr's</a>
     </div>
     <div class="menu-dropdown" id="menu-dropdown">
-        <li class="dropdown-element"><a href="">Alan</a></li>
-        <li class="dropdown-element"><a href="">SOFI</a></li>
-        <li class="dropdown-element"><a href="">ALFREDO</a></li>
+        <li class="dropdown-element"><a href="index.php">Home</a></li>
+        <li class="dropdown-element"><a href="signup.php">Signup</a></li>
+        <li class="dropdown-element"><a href="login.php">Login</a></li>
     </div>
