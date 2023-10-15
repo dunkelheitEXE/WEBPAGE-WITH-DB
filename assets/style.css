@@ -125,6 +125,38 @@
     width: 100%;
 }
 
+.target {
+    width: 90%;
+    background: var(--color-soft);
+    padding: 14px;
+    border: 3px solid gray;
+    border-radius: 5px;
+    margin: 15px auto;
+    text-align: center;
+}
+
+.tg-success {
+    background: var(--color-succes-soft);
+}
+.tg-danger-soft {
+    background: var(--color-danger-soft);
+}
+
+.float-button {
+    position: fixed;
+    top: 25px;
+    right: 0;
+    border-radius: 45%;
+    border: 3px solid var(--color-danger);
+    background: var(--color-danger-soft);
+    padding: 10px;
+    text-align: center;
+}
+
+.float-button a{
+    color: var(--color-dark);
+    text-decoration: none;
+}
 
 
 /* FORMS */

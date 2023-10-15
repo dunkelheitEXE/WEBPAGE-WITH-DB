@@ -15,7 +15,12 @@ if(!empty($_POST['username']) && !empty($_POST['userpass'])) {
     } else {
         $message="Connection error";
     }
-    echo $message;
+}
+
+if(!empty($message)) {
+    echo"<div class='target tg-success'>$message</div>";
+} else {
+    echo "";
 }
 
 ?>
