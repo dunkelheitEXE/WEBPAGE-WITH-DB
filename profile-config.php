@@ -9,4 +9,9 @@ if(!isset($_SESSION['userid'])) {
     echo "hola";
 }
 ?>
+
+<!-- HTML SCRIPT -->
+<div class="float-button fb-right">
+    <a href="logout.php">Logout</a>
+</div>
 <?php include("includes/footer.php")?>

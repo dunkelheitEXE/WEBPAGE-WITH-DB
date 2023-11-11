@@ -143,32 +143,46 @@
 }
 
 .float-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
-    top: 25px;
-    right: 0;
-    border-radius: 45%;
-    border: 3px solid var(--color-danger);
-    background: var(--color-danger-soft);
+    background: var(--color-dark);
     padding: 10px;
     text-align: center;
 }
 
+.fb-right {
+    top: 0;
+    right: 0;
+}
+
+.fb-left {
+    top: 0;
+    left: 0;
+}
+
 .float-button a{
-    color: var(--color-dark);
+    color: var(--color-soft);
     text-decoration: none;
 }
 
 .button-selection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 80px;
-    height: 65px;
-    background: var(--color-soft);
+    height: 35px;
+    background: rgb(70, 70, 70);
     border: solid 1px gray;
     border-radius: 5px;
+    align-items: center;
 }
 
 .button-selection a{
     text-decoration: none;
-    color: var(--color-dark);
+    color: white;
+    font-size: 12px;
 }
 
 /* FORMS */
