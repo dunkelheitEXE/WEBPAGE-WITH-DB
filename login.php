@@ -16,15 +16,21 @@ if(!empty($_POST['username']) && !empty($_POST['userpass'])) {
     $results = $rec->fetch(PDO::FETCH_ASSOC);
     echo $results;
 
-    if(count($results) > 0 && password_verify($_POST['userpass'], $results['userpass'])) {
-        $_SESSION['userid'] = $results['id'];
-        header("Location: home.php");
-    } else {
+    try {
+        //code...
+        if(count($results) > 0 && password_verify($_POST['userpass'], $results['userpass'])) {
+            $_SESSION['userid'] = $results['id'];
+            header("Location: home.php");
+        } else {
+            $message = "Not authorized access. These credentials are not available";
+        }
+    } catch (\Throwable $th) {
         $message = "Not authorized access. These credentials are not available";
     }
+    
 }
 if(!empty($message)) {
-    echo"<div class='target tg-danger-soft'>$message</div>";
+    echo"<div class='target tg-danger'>$message</div>";
 }
 ?>
 <form action="login.php" class="form" method="POST">

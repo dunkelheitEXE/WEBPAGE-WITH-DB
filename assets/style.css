@@ -158,6 +158,18 @@
     text-decoration: none;
 }
 
+.button-selection {
+    width: 80px;
+    height: 65px;
+    background: var(--color-soft);
+    border: solid 1px gray;
+    border-radius: 5px;
+}
+
+.button-selection a{
+    text-decoration: none;
+    color: var(--color-dark);
+}
 
 /* FORMS */
 .form {
@@ -188,4 +200,31 @@
 .form-button {
     background: var(--color-success);
     color: white;
+}
+
+
+/* USER PROFILE TARGET AND WIDGETS */
+.target-user {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-soft);
+    border: solid 2px gray;
+    border-radius: 10px;
+    margin: 25px auto;
+    padding: 2px;
+}
+
+.user-data {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    padding: 5px;
 }
