@@ -142,14 +142,12 @@
     background: var(--color-danger-soft);
 }
 
-.float-button {
+.float-element {
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
     background: var(--color-dark);
-    padding: 10px;
-    text-align: center;
 }
 
 .fb-right {
@@ -160,6 +158,10 @@
 .fb-left {
     top: 0;
     left: 0;
+}
+
+.float-button {
+    padding: 10px;
 }
 
 .float-button a{

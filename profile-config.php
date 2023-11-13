@@ -6,12 +6,18 @@ if(!isset($_SESSION['userid'])) {
     header("Location: index.php");
 } else {
     //code...
-    echo "hola";
+    if(isset($_POST['submit'])){
+        
+    }
 }
 ?>
 
 <!-- HTML SCRIPT -->
-<div class="float-button fb-right">
-    <a href="logout.php">Logout</a>
-</div>
+<?php include("includes/toLogged.php"); ?>
+
+<form action="profile-config.php" method="post" class="form" enctype="multipart/form-data">
+    <img src="img/profile.jpg" alt="photo" class="profile-photo">
+    <input class="form-control" type="file" name="profilephoto" accept=".jpg,.png,.jpeg">
+    <input type="submit" name="submit" value="Submit" class="form-control form-button">
+</form>
 <?php include("includes/footer.php")?>

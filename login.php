@@ -14,7 +14,7 @@ if(!empty($_POST['username']) && !empty($_POST['userpass'])) {
     
     $message="";
     $results = $rec->fetch(PDO::FETCH_ASSOC);
-    echo $results;
+    //echo $results;
 
     try {
         //code...

@@ -19,10 +19,9 @@ if(isset($_SESSION['userid'])){
 } else {
     header("Location: index.php");
 }
+
+include("includes/toLogged.php");
 ?>
-<div class="float-button fb-right">
-    <a href="logout.php">Logout</a>
-</div>
 <div class="target-user">
     <img src="img\profile.jpg" alt="image" class="profile-photo">
     <div class="user-data">
