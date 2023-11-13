@@ -3,7 +3,7 @@
 session_start();
 require "db.php";
 if(isset($_SESSION['userid'])){
-    $stmt = $connection->prepare('SELECT id, username FROM users WHERE id=:id');
+    $stmt = $connection->prepare('SELECT * FROM users WHERE id=:id');
     $stmt -> bindParam(':id', $_SESSION['userid']);
     $stmt->execute();
     $results = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -14,6 +14,7 @@ if(isset($_SESSION['userid'])){
     }
     if(!empty($user)) {
         $name = $user['username'];
+        $desc = $user['userdesc'];
     }
 
 } else {
@@ -23,10 +24,15 @@ if(isset($_SESSION['userid'])){
 include("includes/toLogged.php");
 ?>
 <div class="target-user">
-    <img src="img\profile.jpg" alt="image" class="profile-photo">
+    <?php if(isset($_SESSION['profilephoto']) and $_SESSION['profilephoto'] != null): ?>
+        <img src="<?= $_SESSION['profilephoto']?>" alt="photo mysql" class="profile-photo">
+    <?php endif; ?>
+    <?php if(!isset($_SESSION['profilephoto']) or $_SESSION['profilephoto'] == null): ?>
+        <img src="img/profile.jpg" alt="photo" class="profile-photo">
+    <?php endif;?>
     <div class="user-data">
         <p>User: <?php echo $name; ?></p>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam placeat inventore quaerat tempora sunt deserunt veritatis at impedit laboriosam, itaque commodi provident molestias iste a amet eos est sequi ad.</p>
+        <p><?php echo $desc; ?></p>
         <div class="button-selection">
             <a href="profile-config.php">CONFIGURE</a>
         </div>

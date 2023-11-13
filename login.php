@@ -20,6 +20,7 @@ if(!empty($_POST['username']) && !empty($_POST['userpass'])) {
         //code...
         if(count($results) > 0 && password_verify($_POST['userpass'], $results['userpass'])) {
             $_SESSION['userid'] = $results['id'];
+            $_SESSION['profilephoto'] = $results['profilephoto'];
             header("Location: home.php");
         } else {
             $message = "Not authorized access. These credentials are not available";
