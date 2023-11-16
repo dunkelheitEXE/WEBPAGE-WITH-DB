@@ -80,6 +80,7 @@
 - IMAGES
 - LIST
 - TARGETS
+- FLOAT BUTTONS
 */
 
 .title {
@@ -187,6 +188,32 @@
     font-size: 12px;
 }
 
+.profile-menu {
+    position: absolute;
+    display: none;
+    right: -500px;
+}
+
+.profile-v {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    right: 0;
+    background-color: rgb(31, 30, 30);
+}
+.profile-v a{
+    padding: 10px;
+    background-color: rgb(31, 30, 30);
+    color: white;
+    text-decoration: none;
+}
+
+.profile-v a:hover{
+    background-color: white;
+    color:rgb(31, 30, 30);
+}
+
 /* FORMS */
 .form {
     width: 90%;
@@ -216,6 +243,7 @@
 .form-button {
     background: var(--color-success);
     color: white;
+    cursor: pointer;
 }
 
 
@@ -244,3 +272,67 @@
     border-radius: 50%;
     padding: 5px;
 }
+
+/* --- FEED --- */
+
+.container {
+    display: flex;
+    width: 40%;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: var(--color-soft);
+    flex-direction: column;
+    align-items: center;
+}
+
+.element-target {
+    width: 90%;
+    background-color: white;
+    border-radius: 15px;
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.element-image {
+    width: 90%;
+}
+.element-image img{
+    width: 100%;
+    border-radius: 25px;
+}
+
+.element-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.element-btn {
+    padding: 15px;
+    width: 100px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.view {
+    background: #5E77BB;
+    color: var(--color-soft);
+}
+
+.buy {
+    background: var(--color-success);
+    color: var(--color-soft);
+}
+
+.element-text {
+    width: 90%;
+    text-align: center;
+    padding: 15px;
+}
+

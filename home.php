@@ -28,7 +28,7 @@ include("includes/toLogged.php");
         <img src="<?= $_SESSION['profilephoto']?>" alt="photo mysql" class="profile-photo">
     <?php endif; ?>
     <?php if(!isset($_SESSION['profilephoto']) or $_SESSION['profilephoto'] == null): ?>
-        <img src="img/profile.jpg" alt="photo" class="profile-photo">
+        <img src="resources/profile.jpg" alt="photo" class="profile-photo">
     <?php endif;?>
     <div class="user-data">
         <p>User: <?php echo $name; ?></p>
@@ -39,5 +39,9 @@ include("includes/toLogged.php");
     </div>
 </div>
 <p class="subtitle">We are a tecnology commpany focus to develop our planet to a better way to the evolution</p>
-<div class="main-image"><img src="img/industry.jpg" alt=""></div>
+<div class="main-image"><img src="resources/industry.jpg" alt=""></div>
+
+<div class="container">
+    
+</div>
 <?php include("includes/footer.php");?>
