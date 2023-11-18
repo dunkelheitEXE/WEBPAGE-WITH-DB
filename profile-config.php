@@ -47,7 +47,7 @@ if(!isset($_SESSION['userid'])) {
         <img src="<?= $_SESSION['profilephoto']?>" alt="photo mysql" class="profile-photo">
     <?php endif; ?>
     <?php if(!isset($_SESSION['profilephoto']) or $_SESSION['profilephoto'] == null): ?>
-        <img src="img/profile.jpg" alt="photo" class="profile-photo">
+        <img src="resources/profile.jpg" alt="photo" class="profile-photo">
     <?php endif;?>
     <input class="form-control" type="file" name="profilephoto" accept=".jpg,.png,.jpeg">
     <input type="text" name="userdesc" id="" class="form-control">

@@ -42,6 +42,25 @@ include("includes/toLogged.php");
 <div class="main-image"><img src="resources/industry.jpg" alt=""></div>
 
 <div class="container">
-    
+    <?php
+    if(isset($_SESSION['userid'])):
+        $produc = $connection->prepare("SELECT * FROM objects");
+        $produc->execute();
+        while($produc_result = $produc->fetch()):?>
+            <div class="element-target">
+                <div class="element-image">
+                    <img src="<?= $produc_result['obimage']?>" alt="img">
+                </div>
+                <div class="element-button">
+                    <a href="#" class="element-btn view">view</a>
+                    <a href="#" class="element-btn buy">buy</a>
+                </div>
+                <div class="element-title"><?=$produc_result['obname']?></div>
+                <div class="element-text"><?= $produc_result['obdesc']?></div>
+            </div>
+        <?php 
+        endwhile;
+    endif;
+        ?>
 </div>
 <?php include("includes/footer.php");?>
