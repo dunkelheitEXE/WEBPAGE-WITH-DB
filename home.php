@@ -2,6 +2,7 @@
 <?php
 session_start();
 require "db.php";
+$name ="";
 if(isset($_SESSION['userid'])){
     $stmt = $connection->prepare('SELECT * FROM users WHERE id=:id');
     $stmt -> bindParam(':id', $_SESSION['userid']);
@@ -52,8 +53,12 @@ include("includes/toLogged.php");
                     <img src="<?= $produc_result['obimage']?>" alt="img">
                 </div>
                 <div class="element-button">
+                    <?php if($produc_result['byuser'] != $name):?>
                     <a href="#" class="element-btn view">view</a>
                     <a href="#" class="element-btn buy">buy</a>
+                    <?php else: ?>
+                        <a href="#">UPDATE</a>
+                    <?php endif;?>
                 </div>
                 <div class="element-title"><?=$produc_result['obname']?></div>
                 <div class="element-text"><?= $produc_result['obdesc']?></div>

@@ -5,25 +5,38 @@ require "db.php";
 $message = "";
 if(!empty($_POST['username']) && !empty($_POST['userpass'])) {
     // MYSQL COMMAND TO EXECUTE
-    $sql = "INSERT INTO users(username, userpass) VALUES(:username, :userpass)";
-
-    //VERIFY IF PASSWORD IS CONFIRMED
-    $p1 = $_POST['userpass'];
-    $p2 = $_POST['confirmation'];
-    if($p1 == $p2) {
-        //PREPARE AND EXECUTE MYSQL PROMPT
-        $stmt = $connection -> prepare($sql);
-        $stmt->bindParam(':username', $_POST['username']);
-        $password = password_hash($_POST['userpass'], PASSWORD_BCRYPT);
-        $stmt->bindParam(':userpass', $password);
-
-        if($stmt->execute()) {
-            $message="<div class='target tg-success'>USER CREATED SUCCESSFULY</div>";
-        } else {
-            $message="<div class='target tg-danger'>ERROR, PLEASE CHECK YOUR CONNECTION</div>";
+    $state_verifying = true;
+    $verification = $connection->prepare("SELECT * FROM users");
+    $verification->execute();
+    while ($verfying=$verification->fetch()) {
+        if($verfying['username'] == $_POST['username']) {
+            $state_verifying = false;
+            break;
         }
+    }
+    if($state_verifying == false) {
+        $message = "<div class='target tg-danger'>ERROR, THIS USER HAVE ALREADY BEEN CREATED</div>";
     } else {
-        $message = "<div class='target tg-danger'>YOUR PASSWORD CONFIRMATION IS NOT CORRECT</div>";
+        $sql = "INSERT INTO users(username, userpass) VALUES(:username, :userpass)";
+
+        //VERIFY IF PASSWORD IS CONFIRMED
+        $p1 = $_POST['userpass'];
+        $p2 = $_POST['confirmation'];
+        if($p1 == $p2) {
+            //PREPARE AND EXECUTE MYSQL PROMPT
+            $stmt = $connection -> prepare($sql);
+            $stmt->bindParam(':username', $_POST['username']);
+            $password = password_hash($_POST['userpass'], PASSWORD_BCRYPT);
+            $stmt->bindParam(':userpass', $password);
+
+            if($stmt->execute()) {
+                $message="<div class='target tg-success'>USER CREATED SUCCESSFULY</div>";
+            } else {
+                $message="<div class='target tg-danger'>ERROR, PLEASE CHECK YOUR CONNECTION</div>";
+            }
+        } else {
+            $message = "<div class='target tg-danger'>YOUR PASSWORD CONFIRMATION IS NOT CORRECT</div>";
+        }
     }
 
     

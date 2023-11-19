@@ -8,9 +8,14 @@ if(!isset($_SESSION['userid'])) {
 }
 $message="";
 if(!empty($_POST['obname']) && !empty($_POST['obdesc'])){
-    $req = $connection->prepare("INSERT INTO objects(obname, obdesc, obimage, obcr) VALUES(:obname, :obdesc, :obimage, NOW())");
+    $getuser = $connection->prepare("SELECT username FROM users WHERE id=:id");
+    $getuser->bindParam(':id', $_SESSION['userid']);
+    $getuser->execute();
+    $gotten = $getuser->fetch(PDO::FETCH_ASSOC);
+    $req = $connection->prepare("INSERT INTO objects(obname, obdesc, obimage, obcreated, byuser) VALUES(:obname, :obdesc, :obimage, NOW(), :byuser)");
     $req->bindParam(':obname', $_POST['obname']);
     $req->bindParam(':obdesc', $_POST['obdesc']);
+    $req->bindParam(':byuser', $gotten['username']);
     $obimage = 'img/'.$_FILES['obimage']['name'];
     move_uploaded_file($_FILES['obimage']['tmp_name'], $obimage);
     $req->bindParam(':obimage', $obimage);
