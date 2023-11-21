@@ -57,7 +57,7 @@ include("includes/toLogged.php");
                     <a href="#" class="element-btn view">view</a>
                     <a href="#" class="element-btn buy">buy</a>
                     <?php else: ?>
-                        <a href="#">UPDATE</a>
+                        <a href="#" class="element-btn">UPDATE</a>
                     <?php endif;?>
                 </div>
                 <div class="element-title"><?=$produc_result['obname']?></div>

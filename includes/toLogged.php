@@ -1,10 +1,22 @@
+<?php require "db.php";
+$link = "resources/profile.jpg";
+if(isset($_SESSION['userid'])) {
+    $account = $connection->prepare("SELECT profilephoto FROM users WHERE id = :id");
+    $account->bindParam(':id', $_SESSION['userid']);
+    $account->execute();
+    $r = $account->fetch(PDO::FETCH_ASSOC);
+    if(count($r) > 0) {
+        $link = $r['profilephoto'];
+    }
+}
+?>
 <div class="float-element fb-right">
     <div class="float-button"><a href="logout.php">Logout</a></div>
-    <div class="float-button"><a href="#" id="profile-btn"><span class="material-symbols-outlined">account_circle</span></a></div>
+    <div class="float-button"><a href="#" id="profile-btn"><img src="<?=$link ?>" alt="" style="width: 24px; border-radius:50%;"></a></div>
 </div>
 <div class="profile-menu" id="profile-menu">
     <a href="uploadOb.php">UPLOAD</a>
-    <a href="#">comming soon</a>
+    <a href="ware.php">YOUT PRODUCTS</a>
 </div>
 
 <script>
