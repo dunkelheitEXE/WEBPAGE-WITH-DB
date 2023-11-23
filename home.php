@@ -16,6 +16,8 @@ if(isset($_SESSION['userid'])){
     if(!empty($user)) {
         $name = $user['username'];
         $desc = $user['userdesc'];
+        $photo = $user['profilephoto'];
+        $nick = $user['usernickname'];
     }
 
 } else {
@@ -26,13 +28,17 @@ include("includes/toLogged.php");
 ?>
 <div class="target-user">
     <?php if(isset($_SESSION['profilephoto']) and $_SESSION['profilephoto'] != null): ?>
-        <img src="<?= $_SESSION['profilephoto']?>" alt="photo mysql" class="profile-photo">
+        <img src="<?= $photo?>" alt="photo mysql" class="profile-photo">
     <?php endif; ?>
     <?php if(!isset($_SESSION['profilephoto']) or $_SESSION['profilephoto'] == null): ?>
         <img src="resources/profile.jpg" alt="photo" class="profile-photo">
     <?php endif;?>
     <div class="user-data">
+        <?php if(!empty($nick)):?>
+        <p>User: <?php echo $nick; ?></p>
+        <?php else:?>
         <p>User: <?php echo $name; ?></p>
+        <?php endif;?>
         <p><?php echo $desc; ?></p>
         <div class="button-selection">
             <a href="profile-config.php">CONFIGURE</a>

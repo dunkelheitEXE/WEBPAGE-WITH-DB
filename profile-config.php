@@ -7,32 +7,46 @@ if(!isset($_SESSION['userid'])) {
 } else {
     //code...
     $message="";
+    $getting = $connection->prepare("SELECT * FROM users WHERE id=:id");
+    $getting->bindParam(':id', $_SESSION['userid']);
+    $getting->execute();
+    $results = $getting->fetch(PDO::FETCH_ASSOC);
     if(isset($_POST['submit'])){
-        $mysql = "UPDATE users SET profilephoto = :photo, userdesc = :userdesc WHERE id=:id";
-        $req = $connection->prepare($mysql);
-        $req->bindParam(':id', $_SESSION['userid']);
-        $des=$_POST['userdesc'];
-        $photofile = "img/".$_FILES['profilephoto']['name'];
-        //SAVE IMAGE AND UPLOAD IT TO DB
-        if(empty($_FILES['profilephoto']['name']) or empty($_FILES['profilephoto']['tmp_name'])){
-            $message = "You kept your photo profile";
-            $record=$connection->prepare("SELECT * FROM users WHERE id=:id");
-            $record->bindParam(':id', $_SESSION['userid']);
-            $record->execute();
-            $res = $record->fetch(PDO::FETCH_ASSOC);
-            $photofile = $res['profilephoto'];
-        } else if(empty($_POST['userdesc'])) {
-            $message = "Your profile photo has been updated";
-            $record=$connection->prepare("SELECT * FROM users WHERE id=:id");
-            $record->bindParam(':id', $_SESSION['userid']);
-            $record->execute();
-            $res = $record->fetch(PDO::FETCH_ASSOC);
-            $des = $res['userdesc'];
+        if(!empty($_POST['userdesc']) and !$_FILES['profilephoto']['tmp_name']) {
+            $req = $connection->prepare("UPDATE users SET userdesc=:descc WHERE id=:id");
+            $req->bindParam(':descc', $_POST['userdesc']);
+            $req->bindParam(':id', $_SESSION['userid']);
+            if($req->execute()) {
+                $message = "USER DESCRIPTION UPDATED SUCCESSFULLY!";
+            }
+        } else if(empty($_POST['userdesc']) and $_FILES['profilephoto']['tmp_name']){
+            $req = $connection->prepare("UPDATE users SET profilephoto=:p WHERE id=:id");
+            $route = "img/".$_FILES['profilephoto']['name'];
+            move_uploaded_file($_FILES['profilephoto']['tmp_name'], $route);
+            $req->bindParam(':p', $route);
+            $req->bindParam(':id', $_SESSION['userid']);
+            if($req->execute()) {
+                $message = "USER PHOTO UPDATED SUCCESSFULLY!";
+            }
+        } else if(empty($_POST['userdesc']) and !$_FILES['profilephoto']['tmp_name'] and !empty($_POST['usernickname'])){
+            $req = $connection->prepare("UPDATE users SET usernickname=:nick WHERE id=:id");
+            $req->bindParam(':nick', $_POST['usernickname']);
+            $req->bindParam(':id', $_SESSION['userid']);
+            if($req->execute()) {
+                $message = "NICKNAME UPDATED SUCCESSFULLY!";
+            }
+        } else {
+            $req = $connection->prepare("UPDATE users SET userdesc=:descc, profilephoto=:p, usernickname=:n WHERE id=:id");
+            $req->bindParam(':descc', $_POST['userdesc']);
+            $route = "img/".$_FILES['profilephoto']['name'];
+            move_uploaded_file($_FILES['profilephoto']['tmp_name'], $route);
+            $req->bindParam(':p', $route);
+            $req->bindParam(':n', $_POST['usernickname']);
+            $req->bindParam(':id', $_SESSION['userid']);
+            if($req->execute()) {
+                $message = "USER ASPECTS UPDATED SUCCESSFULLY!";
+            }
         }
-        $req->bindParam(':userdesc', $des);
-        move_uploaded_file($_FILES['profilephoto']['tmp_name'], $photofile);
-        $req->bindParam(':photo', $photofile);
-        $req->execute();
     }
 }
 ?>
@@ -43,12 +57,13 @@ if(!isset($_SESSION['userid'])) {
     <div class="target"><?=$message?></div>
 <?php endif;?>
 <form action="profile-config.php" method="post" class="form" enctype="multipart/form-data">
-    <?php if(isset($_SESSION['profilephoto']) and $_SESSION['profilephoto'] != null): ?>
+    <?php if(isset($_SESSION['profilephoto']) or $_SESSION['profilephoto'] != null): ?>
         <img src="<?= $_SESSION['profilephoto']?>" alt="photo mysql" class="profile-photo">
     <?php endif; ?>
     <?php if(!isset($_SESSION['profilephoto']) or $_SESSION['profilephoto'] == null): ?>
         <img src="resources/profile.jpg" alt="photo" class="profile-photo">
     <?php endif;?>
+    <input type="text" name="usernickname" class="form-control" value="<?= $results['usernickname']?>">
     <input class="form-control" type="file" name="profilephoto" accept=".jpg,.png,.jpeg">
     <input type="text" name="userdesc" id="" class="form-control">
     <input type="submit" name="submit" value="Submit" class="form-control form-button">
