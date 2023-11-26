@@ -63,9 +63,9 @@ if(!isset($_SESSION['userid'])) {
     <?php if(!isset($_SESSION['profilephoto']) or $_SESSION['profilephoto'] == null): ?>
         <img src="resources/profile.jpg" alt="photo" class="profile-photo">
     <?php endif;?>
-    <input type="text" name="usernickname" class="form-control" value="<?= $results['usernickname']?>">
+    <input type="text" name="usernickname" class="form-control" value="<?= $results['usernickname']?>" placeholder="Nickname">
     <input class="form-control" type="file" name="profilephoto" accept=".jpg,.png,.jpeg">
-    <input type="text" name="userdesc" id="" class="form-control">
+    <input type="text" name="userdesc" id="" class="form-control" placeholder="profile description">
     <input type="submit" name="submit" value="Submit" class="form-control form-button">
 </form>
 <?php include("includes/footer.php")?>
