@@ -1,5 +1,8 @@
 <?php include("includes/header.php")?>
 <?php
+
+try {
+    //code...
 require "db.php";
 
 $message = "";
@@ -46,6 +49,11 @@ if(!empty($message)) {
     echo"$message";
 } else {
     echo "";
+}
+
+} catch (\Throwable $th) {
+    //throw $th;
+    echo $th;
 }
 
 ?>

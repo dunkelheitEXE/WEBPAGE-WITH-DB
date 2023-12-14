@@ -46,7 +46,7 @@ include("includes/toLogged.php");
     </div>
 </div>
 <p class="subtitle">We are a tecnology commpany focus to develop our planet to a better way to the evolution</p>
-<div class="main-image"><img src="resources/industry.jpg" alt=""></div>
+<div class="main-image"><img src="resources/Industry.jpg" alt=""></div>
 
 <div class="container">
     <?php
